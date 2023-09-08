@@ -1,15 +1,48 @@
-import { createContext, useState } from "react";
-
-export const initialState = { theme: "", data: [] };
+import { createContext, useReducer, useState } from "react";
 
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
-    //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
-
-    const [data, setData] = useState();
+    const [theme, setTheme] = useState(false);
     const [user, setUser] = useState();
+    function reducer(state, action) {
+        switch (action.type) {
+            case "setAllDestist":
+                return {
+                    ...state,
+                    allDestist: action.payload,
+                };
+            case "setDentist":
+                return {
+                    ...state,
+                    denstist: action.payload,
+                };
+            case "setTheme":
+                return {
+                    ...state,
+                    theme: !state.theme,
+                };
 
+            default:
+                return state;
+        }
+    }
+    const initialValue = {
+        allDestist: {},
+        denstist: {},
+        theme: false,
+    };
+    const [state, dispatch] = useReducer(reducer, initialValue);
+
+    const handleSetUsers = (datos) => {
+        dispatch({ type: "setAllDestist", payload: datos });
+    };
+    const handleDenstist = (datos) => {
+        dispatch({ type: "setDentist", payload: datos });
+    };
+    const handleTheme = () => {
+        dispatch({ type: "setTheme" });
+    };
     const getUsuarios = async () => {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
@@ -28,11 +61,13 @@ export const ContextProvider = ({ children }) => {
         <ContextGlobal.Provider
             value={{
                 getUsuarios,
-                data,
-                setData,
                 getUserById,
                 user,
                 setUser,
+                handleSetUsers,
+                state,
+                handleDenstist,
+                handleTheme,
             }}
         >
             {children}

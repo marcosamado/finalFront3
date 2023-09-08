@@ -8,17 +8,17 @@ import { useParams } from "react-router-dom";
 const Detail = () => {
     const [loading, setLoading] = useState(true);
     // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
-    const { getUserById, user, setUser } = useContext(ContextGlobal);
+    const { getUserById, handleDenstist, state } = useContext(ContextGlobal);
 
     const { id } = useParams();
 
     useEffect(() => {
         getUserById(id).then((datos) => {
-            setUser(datos);
+            handleDenstist(datos);
             setLoading(false);
         });
     }, []);
-    console.log(user);
+    console.log(state);
     return (
         <Layout>
             <h1>Detail Dentist id </h1>
@@ -27,10 +27,10 @@ const Detail = () => {
 
             {!loading && (
                 <div>
-                    <p>{user.name}</p>
-                    <p>{user.email}</p>
-                    <p>{user.phone}</p>
-                    <p>{user.website}</p>
+                    <p>{state.denstist.name}</p>
+                    <p>{state.denstist.email}</p>
+                    <p>{state.denstist.phone}</p>
+                    <p>{state.denstist.website}</p>
                 </div>
             )}
         </Layout>

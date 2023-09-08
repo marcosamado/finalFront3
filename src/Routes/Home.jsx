@@ -7,11 +7,11 @@ import Card from "../Components/Card";
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
-    const { getUsuarios, data, setData } = useContext(ContextGlobal);
+    const { getUsuarios, handleSetUsers, state } = useContext(ContextGlobal);
 
     useEffect(() => {
         getUsuarios().then((datos) => {
-            setData(datos);
+            handleSetUsers(datos);
             setLoading(false);
         });
     }, []);
@@ -22,7 +22,9 @@ const Home = () => {
                 <h1>Home</h1>
                 <div className="card-grid">
                     {!loading &&
-                        data.map((item) => <Card key={item.id} {...item} />)}
+                        state.allDestist.map((item) => (
+                            <Card key={item.id} {...item} />
+                        ))}
                 </div>
             </main>
         </Layout>

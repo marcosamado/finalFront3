@@ -1,7 +1,14 @@
+import { useContext } from "react";
 import AppRouter from "./Routes/AppRouter";
+import { ContextGlobal } from "./Components/utils/global.context";
 
 function App() {
-    return <AppRouter />;
+    const { state } = useContext(ContextGlobal);
+    return (
+        <div className={state.theme && "dark"}>
+            <AppRouter />;
+        </div>
+    );
 }
 
 export default App;
