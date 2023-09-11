@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../Components/Layout";
 import { ContextGlobal } from "../Components/utils/global.context";
 import Card from "../Components/Card";
 
@@ -17,7 +16,7 @@ const Home = () => {
     }, []);
 
     return (
-        <Layout>
+        <div>
             <main className="">
                 <h1>Home</h1>
                 <div className="card-grid">
@@ -27,7 +26,7 @@ const Home = () => {
                         ))}
                 </div>
             </main>
-        </Layout>
+        </div>
     );
 };
 

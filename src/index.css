@@ -20,15 +20,41 @@ code {
     cursor: pointer;
 }
 
+nav {
+    padding: 10px;
+    display: flex;
+    width: 80%;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: bisque;
+    justify-content: space-between;
+}
+nav h2 {
+    align-items: start;
+    flex: 3;
+    align-self: center;
+}
+ul {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    list-style: none;
+    align-self: center;
+    padding: 0;
+}
+.ul-button {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+.ul-button button {
+    height: 50%;
+    align-self: center;
+    flex: 0.5;
+}
 h1 {
     text-align: center;
-}
-
-nav {
-    display: flex;
-    width: 80vw;
-    justify-content: flex-start;
-    padding: 1rem;
 }
 
 a {
@@ -76,6 +102,7 @@ form {
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     width: 200px;
     padding: 0.5rem 0.5rem 0 0.5rem;
     border: 0.5px solid rgb(136, 136, 136);
@@ -93,6 +120,13 @@ form {
     height: auto;
     flex-wrap: wrap;
     margin: 0 auto;
+}
+.divImgDoctor {
+    width: auto;
+    height: auto;
+}
+.imgDoctor {
+    width: 100%;
 }
 
 table {
@@ -123,4 +157,7 @@ tr:nth-child(even) {
 }
 .dark .favButton {
     color: white;
+}
+.dark nav {
+    background-color: rgb(43, 43, 43);
 }
