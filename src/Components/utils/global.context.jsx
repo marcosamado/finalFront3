@@ -3,8 +3,6 @@ import { createContext, useReducer, useState } from "react";
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
-    const [theme, setTheme] = useState(false);
-    const [user, setUser] = useState();
     function reducer(state, action) {
         switch (action.type) {
             case "setAllDestist":
@@ -27,12 +25,12 @@ export const ContextProvider = ({ children }) => {
                 return state;
         }
     }
-    const initialValue = {
+    const initialState = {
         allDestist: {},
         denstist: {},
         theme: false,
     };
-    const [state, dispatch] = useReducer(reducer, initialValue);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleSetUsers = (datos) => {
         dispatch({ type: "setAllDestist", payload: datos });
@@ -62,8 +60,6 @@ export const ContextProvider = ({ children }) => {
             value={{
                 getUsuarios,
                 getUserById,
-                user,
-                setUser,
                 handleSetUsers,
                 state,
                 handleDenstist,

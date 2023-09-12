@@ -6,6 +6,7 @@ import Card from "../Components/Card";
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
+    const [favs, setFavs] = useState([]);
     const { getUsuarios, handleSetUsers, state } = useContext(ContextGlobal);
 
     useEffect(() => {
@@ -15,6 +16,10 @@ const Home = () => {
         });
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem("favs", JSON.stringify(favs));
+    }, [favs]);
+
     return (
         <div>
             <main className="">
@@ -22,7 +27,12 @@ const Home = () => {
                 <div className="card-grid">
                     {!loading &&
                         state.allDestist.map((item) => (
-                            <Card key={item.id} {...item} />
+                            <Card
+                                key={item.id}
+                                {...item}
+                                setFavs={setFavs}
+                                favs={favs}
+                            />
                         ))}
                 </div>
             </main>

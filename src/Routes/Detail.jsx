@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../Components/Layout";
 import { ContextGlobal } from "../Components/utils/global.context";
 import { useParams } from "react-router-dom";
 
