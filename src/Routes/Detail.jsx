@@ -19,17 +19,21 @@ const Detail = () => {
     }, []);
     console.log(state);
     return (
-        <div>
+        <div className="details">
             <h1>Detail Dentist id </h1>
             {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
             {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
 
             {!loading && (
-                <div>
-                    <p>{state.denstist.name}</p>
-                    <p>{state.denstist.email}</p>
-                    <p>{state.denstist.phone}</p>
-                    <p>{state.denstist.website}</p>
+                <div className="card-container">
+                    <div className="card">
+                        <div>
+                            <p>{state.denstist.name}</p>
+                            <p>{state.denstist.email}</p>
+                            <p>{state.denstist.phone}</p>
+                            <p>{state.denstist.website}</p>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

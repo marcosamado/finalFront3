@@ -1,16 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import doctorImg from "../images/doctor.jpg";
-const Card = ({ name, username, id, setFavs, favs }) => {
+import { useContext } from "react";
+import { ContextGlobal } from "./utils/global.context";
+const Card = ({ name, username, id }) => {
+    const { state, handleFavs } = useContext(ContextGlobal);
     const { pathname } = useLocation();
     const addFav = () => {
-        if (!favs.some((fav) => fav.id === id)) {
+        if (!state.favs.some((fav) => fav.id === id)) {
             const fav = {
                 name,
                 username,
                 id,
             };
-            const arr = [...favs, fav];
-            setFavs(arr);
+            const arr = [...state.favs, fav];
+            handleFavs(arr);
         }
     };
 

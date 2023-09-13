@@ -5,7 +5,7 @@ import { ContextGlobal } from "./Components/utils/global.context";
 function App() {
     const { state } = useContext(ContextGlobal);
     return (
-        <div className={state.theme && "dark"}>
+        <div className={state.theme ? "dark" : null}>
             <AppRouter />;
         </div>
     );

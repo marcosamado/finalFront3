@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 export const ContextGlobal = createContext(undefined);
 
@@ -20,6 +20,11 @@ export const ContextProvider = ({ children }) => {
                     ...state,
                     theme: !state.theme,
                 };
+            case "setFavs":
+                return {
+                    ...state,
+                    favs: action.payload,
+                };
 
             default:
                 return state;
@@ -29,6 +34,7 @@ export const ContextProvider = ({ children }) => {
         allDestist: {},
         denstist: {},
         theme: false,
+        favs: [],
     };
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -41,6 +47,11 @@ export const ContextProvider = ({ children }) => {
     const handleTheme = () => {
         dispatch({ type: "setTheme" });
     };
+
+    const handleFavs = (datos) => {
+        dispatch({ type: "setFavs", payload: datos });
+    };
+
     const getUsuarios = async () => {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
@@ -55,6 +66,10 @@ export const ContextProvider = ({ children }) => {
         return data;
     };
 
+    useEffect(() => {
+        localStorage.setItem("favs", JSON.stringify(state.favs));
+    }, [state.favs]);
+
     return (
         <ContextGlobal.Provider
             value={{
@@ -64,6 +79,7 @@ export const ContextProvider = ({ children }) => {
                 state,
                 handleDenstist,
                 handleTheme,
+                handleFavs,
             }}
         >
             {children}

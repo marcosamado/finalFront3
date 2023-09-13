@@ -93,7 +93,7 @@ form {
     flex-direction: column;
     justify-content: space-around;
     width: 300px;
-    height: 100px;
+    height: 120px;
     margin: 0 auto;
 }
 
@@ -127,6 +127,12 @@ form {
 }
 .imgDoctor {
     width: 100%;
+}
+.contact,
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 table {
