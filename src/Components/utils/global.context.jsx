@@ -3,6 +3,14 @@ import { createContext, useEffect, useReducer } from "react";
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
+    const initialState = {
+        allDestist: {},
+        denstist: {},
+        theme: false,
+        favs: [],
+    };
+    const [state, dispatch] = useReducer(reducer, initialState);
+
     function reducer(state, action) {
         switch (action.type) {
             case "setAllDestist":
@@ -30,13 +38,6 @@ export const ContextProvider = ({ children }) => {
                 return state;
         }
     }
-    const initialState = {
-        allDestist: {},
-        denstist: {},
-        theme: false,
-        favs: [],
-    };
-    const [state, dispatch] = useReducer(reducer, initialState);
 
     const handleSetUsers = (datos) => {
         dispatch({ type: "setAllDestist", payload: datos });

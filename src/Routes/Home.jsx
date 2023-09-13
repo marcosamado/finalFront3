@@ -6,7 +6,6 @@ import Card from "../Components/Card";
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
-    // const [favs, setFavs] = useState([]);
     const { getUsuarios, handleSetUsers, state } = useContext(ContextGlobal);
 
     useEffect(() => {

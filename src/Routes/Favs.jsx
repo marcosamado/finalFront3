@@ -5,7 +5,6 @@ import Card from "../Components/Card";
 const Favs = () => {
     const favorites = JSON.parse(localStorage.getItem("favs"));
 
-    console.log(favorites);
     return (
         <div>
             <main className="">

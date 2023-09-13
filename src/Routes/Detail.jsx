@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextGlobal } from "../Components/utils/global.context";
 import { useParams } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const Detail = () => {
             setLoading(false);
         });
     }, []);
-    console.log(state);
+
     return (
         <div className="details">
             <h1>Detail Dentist id </h1>
