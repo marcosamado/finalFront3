@@ -2,9 +2,9 @@ import { Link, useLocation } from "react-router-dom";
 import doctorImg from "../images/doctor.jpg";
 import { useContext } from "react";
 import { ContextGlobal } from "./utils/global.context";
-const Card = ({ name, username, id }) => {
+const Card = ({ name, username, id, disableAddButton }) => {
     const { state, handleFavs } = useContext(ContextGlobal);
-    const { pathname } = useLocation();
+    // const { pathname } = useLocation();
     const addFav = () => {
         if (!state.favs.some((fav) => fav.id === id)) {
             const fav = {
@@ -37,7 +37,7 @@ const Card = ({ name, username, id }) => {
                 {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
                 {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-                {pathname !== "/favs" && (
+                {!disableAddButton && (
                     <button onClick={addFav} className="favButton">
                         Add fav
                     </button>

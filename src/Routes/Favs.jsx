@@ -11,7 +11,7 @@ const Favs = () => {
                 <h1>Home</h1>
                 <div className="card-grid">
                     {favorites.map((item) => (
-                        <Card key={item.id} {...item} />
+                        <Card key={item.id} {...item} disableAddButton />
                     ))}
                 </div>
             </main>
